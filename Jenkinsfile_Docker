@@ -1,10 +1,10 @@
 pipeline {
     agent any
     environment {
-        AWS_ACCOUNT_ID="120717539064"
-        AWS_DEFAULT_REGION="us-west-2"
-        IMAGE_REPO_NAME="sample"
-        IMAGE_TAG="v1"
+        AWS_ACCOUNT_ID="500433121564"
+        AWS_DEFAULT_REGION="ap-south-1"
+        IMAGE_REPO_NAME="devopsproject"
+        IMAGE_TAG="latest"
         REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
     }
    
@@ -21,8 +21,10 @@ pipeline {
         
         stage('Cloning Git') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '', url: 'https://github.com/sd031/aws_codebuild_codedeploy_nodeJs_demo.git']]])     
+                
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '', url: 'https://github.com/abrarsyed6213/projectrepo.git']]])
             }
+                
         }
   
     // Building Docker images
